@@ -92,3 +92,43 @@
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
 }
+
+/* Timer */
+.preset-list {
+  display: flex;
+  gap: 8px;
+}
+
+.preset-btn {
+  flex: 1;
+  padding: 12px 8px;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.preset-btn:hover {
+  border-color: var(--accent);
+}
+
+.timer-running {
+  text-align: center;
+}
+
+.timer-countdown {
+  margin: 0;
+  font-size: 36px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-label {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.timer-error {
+  margin: 12px 0 0;
+  color: #e5484d;
+}
