@@ -13,14 +13,8 @@ export function BlockedPanel() {
       <h2 className="panel-title">Blocked Sites</h2>
 
       <form className="add-site-form">
-        <input
-          type="text"
-          className="site-input"
-          placeholder="e.g. youtube.com"
-        />
-        <button type="submit" className="add-site-btn">
-          Add
-        </button>
+        <input type="text" className="site-input" placeholder="e.g. youtube.com" required />
+        <button type="submit" className="add-site-btn">Add</button>
       </form>
 
       <ul className="site-list">

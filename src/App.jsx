@@ -4,11 +4,9 @@ import { TimerPanel, BlockedPanel } from './Panels.jsx'
 import './App.css'
 
 function App() {
-  //Claude used to create html skeleton
-
+  //Claude helped in creating the html skeleton
   const [activeTab, setActiveTab] = useState('timer') //state for switching panels
 
-  // pick the panel to show for the active tab
   let panel;
   if (activeTab === 'timer') {
     panel = <TimerPanel />
@@ -23,20 +21,11 @@ function App() {
       </header>
 
       <nav className="tab-toggle">
-        <button
-          type="button"
-          className="tab-btn"
-          onClick={() => setActiveTab('timer')}
-        >
-          Timer
-        </button>
-        <button
-          type="button"
-          className="tab-btn"
-          onClick={() => setActiveTab('blocklist')}
-        >
-          Blocked Sites
-        </button>
+        <button type="button" className="tab-btn" onClick={() => setActiveTab('timer')}>
+          Timer</button>
+
+        <button type="button" className="tab-btn" onClick={() => setActiveTab('blocklist')}>
+          Blocked Sites</button>
       </nav>
 
       <main className="popup-content">{panel}</main>
