@@ -1,0 +1,58 @@
+/* Colours and fonts come from ../index.css, shared with the popup. */
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.blocked {
+  max-width: 480px;
+  text-align: center;
+}
+
+.blocked__eyebrow {
+  margin-bottom: 12px;
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.blocked__title {
+  margin-bottom: 8px;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.blocked__site {
+  margin-bottom: 32px;
+  color: var(--muted);
+}
+
+.blocked__site a {
+  color: var(--accent);
+}
+
+.blocked__timer {
+  display: inline-block;
+  padding: 16px 28px;
+  border-radius: 16px;
+  background: var(--surface);
+  font-size: 56px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.blocked__hint {
+  margin-top: 16px;
+  color: var(--muted);
+}

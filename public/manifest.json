@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Lock In: Productivity",
+  "version": "1.0.0",
+  "description": "Block distracting websites for a set amount of time and lock in.",
+
+  "icons": {
+    "16": "icon16.jpg",
+    "48": "icon48.jpg",
+    "128": "icon128.jpg"
+  },
+
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Lock In",
+    "default_icon": {
+      "16": "icon16.jpg",
+      "48": "icon48.jpg",
+      "128": "icon128.jpg"
+    }
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "permissions": [
+    "declarativeNetRequest",
+    "alarms",
+    "storage",
+    "tabs",
+    "notifications"
+  ],
+
+  "host_permissions": ["<all_urls>"],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
