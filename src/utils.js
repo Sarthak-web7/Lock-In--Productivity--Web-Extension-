@@ -1,5 +1,7 @@
 // Turns whatever the user typed ("https://www.YouTube.com/watch?v=1", "reddit.com/r/x")
 // into a bare domain ("youtube.com", "reddit.com"), or null if it isn't one.
+//used claude's help to code this.
+
 export function normalizeSite(input) {
   const trimmed = input.trim().toLowerCase();
   if (!trimmed) return null;
