@@ -1,0 +1,28 @@
+/* Used AI help for the styling */
+
+.blocked {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 18vh 24px 48px;
+}
+
+.blocked-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 28px;
+}
+
+.blocked-title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.blocked-text {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 16px;
+  text-wrap: balance;
+}

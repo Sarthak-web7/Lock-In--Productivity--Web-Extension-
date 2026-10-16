@@ -1,59 +1,154 @@
-/* Popup shell */
 .popup {
+  display: grid;
+  grid-template-columns: auto 1fr;
   width: 320px;
-  padding: 16px;
+}
+
+.popup-header,
+.tab-toggle {
+  height: 48px;
+  border-bottom: 1px solid var(--border);
 }
 
 .popup-header {
-  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
 }
 
 .popup-title {
-  margin: 0;
-  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-/* Tabs */
+.popup-title::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: url(/icons/icon48.png) center / contain no-repeat;
+}
+
 .tab-toggle {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  justify-content: flex-end;
+  gap: 16px;
+  padding-right: 16px;
 }
 
 .tab-btn {
-  flex: 1;
-  padding: 8px;
-  background: var(--surface);
+  margin-bottom: -1px;
+  padding: 0 2px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
   color: var(--muted);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
 }
 
 .tab-btn:hover {
   color: var(--text);
 }
 
-/* add className="tab-btn active" to the selected tab to use this */
 .tab-btn.active {
+  border-bottom-color: var(--accent);
   color: var(--text);
-  border-color: var(--accent);
 }
 
-/* Panels */
-.tab-panel {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px;
+.popup-content {
+  grid-column: 1 / -1;
+  min-height: 210px;
+  padding: 16px;
 }
 
 .panel-title {
-  margin: 0 0 12px;
-  font-size: 16px;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
 }
 
-/* Blocked sites form */
+.preset-btn,
+.timer-btn,
+.add-site-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.preset-btn:hover,
+.timer-btn:hover {
+  background: var(--surface-hover);
+}
+
+.add-site-btn,
+.paused .timer-btn:first-child {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.add-site-btn:hover,
+.paused .timer-btn:first-child:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+}
+
+.preset-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.preset-btn {
+  display: flex;
+  align-items: flex-end;
+  height: 88px;
+  padding: 10px 12px;
+  font-family: var(--font-display);
+  font-size: 18px;
+}
+
+.timer-countdown {
+  margin-left: -3px;
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 300;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.paused .timer-countdown {
+  color: var(--faint);
+}
+
+.timer-label {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.timer-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.timer-btn {
+  height: 36px;
+}
+
+.timer-btn:last-child:hover {
+  color: var(--danger);
+}
+
+.timer-error {
+  margin-top: 12px;
+  color: var(--danger);
+}
+
 .add-site-form {
   display: flex;
   gap: 8px;
@@ -61,74 +156,75 @@
 
 .site-input {
   flex: 1;
-  padding: 8px;
-  background: var(--bg);
-  color: var(--text);
+  min-width: 0;
+  height: 36px;
+  padding: 0 10px;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 6px;
+}
+
+.site-input::placeholder {
+  color: var(--faint);
 }
 
 .site-input:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--muted);
 }
 
 .add-site-btn {
-  padding: 8px 12px;
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  height: 36px;
+  padding: 0 16px;
 }
 
 .site-list {
+  max-height: 240px;
+  margin: 8px -12px 0;
+  padding: 0 12px;
   list-style: none;
-  margin: 12px 0 0;
-  padding: 0;
+  overflow-y: auto;
 }
 
-.site-list li {
-  padding: 8px 0;
+.site-list:empty::before {
+  content: 'No sites yet. Add the ones that distract you.';
+  display: block;
+  padding: 10px 0;
+  color: var(--muted);
+  animation: appear 0.1s 0.2s backwards;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+.site-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
   border-bottom: 1px solid var(--border);
 }
 
-/* Timer */
-.preset-list {
-  display: flex;
-  gap: 8px;
-}
-
-.preset-btn {
+.site-name {
   flex: 1;
-  padding: 12px 8px;
-  background: var(--bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.preset-btn:hover {
-  border-color: var(--accent);
-}
-
-.timer-running {
-  text-align: center;
-}
-
-.timer-countdown {
-  margin: 0;
-  font-size: 36px;
-  font-variant-numeric: tabular-nums;
-}
-
-.timer-label {
-  margin: 4px 0 0;
+.delete-site-btn {
+  margin-right: -8px;
+  padding: 4px 8px;
+  background: none;
+  border: 0;
+  border-radius: 4px;
   color: var(--muted);
 }
 
-.timer-error {
-  margin: 12px 0 0;
-  color: #e5484d;
+.delete-site-btn:hover {
+  color: var(--danger);
 }

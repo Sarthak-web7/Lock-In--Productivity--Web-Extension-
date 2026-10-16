@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
-import { formatRemaining, normalizeSite } from './utils.js'
+import { useState } from 'react'
 import { TimerPanel, BlockedPanel } from './Panels.jsx'
 import './App.css'
 
 function App() {
-  //Claude helped in creating the html skeleton
+  //Claude helped in creating the html skeleton and performing advanced css
   const [activeTab, setActiveTab] = useState('timer') //state for switching panels
 
   let panel;
@@ -21,10 +20,10 @@ function App() {
       </header>
 
       <nav className="tab-toggle">
-        <button type="button" className="tab-btn" onClick={() => setActiveTab('timer')}>
+        <button type="button" className={activeTab === 'timer' ? 'tab-btn active' : 'tab-btn'} onClick={() => setActiveTab('timer')}>
           Timer</button>
 
-        <button type="button" className="tab-btn" onClick={() => setActiveTab('blocklist')}>
+        <button type="button" className={activeTab === 'blocklist' ? 'tab-btn active' : 'tab-btn'} onClick={() => setActiveTab('blocklist')}>
           Blocked Sites</button>
       </nav>
 

@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react'
-import { formatRemaining } from '../utils.js'
 import './Blocked.css'
-
 
 function Blocked() {
   return (
-    <h1>Blocked</h1>
+    <main className="blocked">
+      <img className="blocked-icon" src="/icons/icon128.png" alt="" />
+      <h1 className="blocked-title">Blocked, can't even focus? lol</h1>
+      <p className="blocked-text">This site stays blocked until your lock-in ends.</p>
+    </main>
   )
 }
 
